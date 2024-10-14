@@ -44,6 +44,6 @@ lexer fs
                               ':' -> let (str, rest'') = L.splitAt (fromIntegral number) (L.tail rest')
                                      in TString str : lexer rest''
                               _ -> TNumber number : lexer rest'
-          | otherwise -> error "Lexer error."
+          | otherwise -> error $ "Lexer error at character: " ++ [ch]
     where ch = L.head fs
           rest = L.tail fs
